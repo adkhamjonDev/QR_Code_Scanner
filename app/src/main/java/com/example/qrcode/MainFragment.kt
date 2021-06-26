@@ -1,6 +1,9 @@
 package com.example.qrcode
+import android.content.Context
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +25,7 @@ import java.util.*
 class MainFragment : Fragment(),View.OnClickListener {
     private lateinit var binding: FragmentMainBinding
     private lateinit var codeScanner: CodeScanner
+    private lateinit var mediaPlayer: MediaPlayer
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,11 +44,14 @@ class MainFragment : Fragment(),View.OnClickListener {
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {data->
             requireActivity().runOnUiThread {
+                mediaPlayer=MediaPlayer.create(requireContext(),R.raw.short_msg)
+                mediaPlayer.start()
                 val date= Date()
                 val simpleDateFormat= SimpleDateFormat("HH:mm dd.MM.yyy ")
                 val currentDate=simpleDateFormat.format(date)
                 val bundle= bundleOf("data" to data.toString(),"date" to currentDate)
-
+                val v = activity?.getSystemService(Context.VIBRATOR_SERVICE)as Vibrator
+                v.vibrate(300)
                 findNavController().navigate(R.id.infoFragment,bundle)
             }
         }
@@ -55,7 +62,6 @@ class MainFragment : Fragment(),View.OnClickListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 codeScanner.zoom=progress
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
 
             }

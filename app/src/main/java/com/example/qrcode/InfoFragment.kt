@@ -1,6 +1,7 @@
 package com.example.qrcode
 
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -31,7 +32,9 @@ class InfoFragment : Fragment(),View.OnClickListener {
             binding.web.visibility=View.VISIBLE
             binding.mess.visibility=View.GONE
             binding.open.visibility=View.VISIBLE
-            binding.t.text="Url Code"
+            binding.t.text="Url"
+            binding.txt.paintFlags = binding.txt.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+
         }
         else{
             binding.tittle.text="Message"
