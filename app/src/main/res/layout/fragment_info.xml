@@ -151,7 +151,7 @@
                 android:layout_weight="2">
                 <ImageView
                     android:id="@+id/save"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_star__3_"
@@ -198,7 +198,11 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="#1D1D1D"
+        app:cardElevation="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="#F31D1D1D"
         app:cardCornerRadius="20dp"
         android:id="@+id/open"
         android:layout_marginBottom="40dp"

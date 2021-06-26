@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.bosphere.verticalslider.VerticalSlider.OnProgressChangeListener
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
